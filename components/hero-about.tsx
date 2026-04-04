@@ -10,7 +10,7 @@ export function HeroAbout() {
     >
       {/* Put the massive name on its own row to prevent overlap with the bio. */}
       <div className="col-span-12 row-start-1 lg:col-span-8">
-        <p className="text-xs uppercase tracking-widest">Hey, my name is</p>
+        <p className="text-xs uppercase tracking-widest">Hello, my name is</p>
         <h1 className="mt-2 font-black uppercase leading-[0.8] tracking-tighter text-[clamp(3.5rem,12vw,15vw)]">
           <span className="accent-gradient-text-to-black-hover">
             Manish
