@@ -4,24 +4,56 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --accent-solid: #273be2;
+  /* Palatinate Blue solid accent (kept as a "gradient" so existing utilities keep working). */
+  --accent-gradient: linear-gradient(90deg, #273be2 0%, #273be2 100%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .accent-gradient-bg {
+    background-image: var(--accent-gradient);
+  }
+
+  .accent-gradient-text {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .accent-gradient-text-hover:hover {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Accent gradient text that turns fully black on hover (e.g., the "Manish" hero word). */
+  .accent-gradient-text-to-black-hover {
+    /* Since the accent is now solid, use plain color for maximum legibility. */
+    color: var(--accent-solid);
+    transition: color 180ms ease;
+  }
+
+  .accent-gradient-text-to-black-hover:hover {
+    color: var(--foreground);
+  }
+
+  .accent-gradient-bg-hover:hover {
+    background-image: var(--accent-gradient);
   }
 }
