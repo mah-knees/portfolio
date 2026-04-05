@@ -1,50 +1,109 @@
 "use client";
 
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
-const stills = [
+const items = [
   {
-    src: "https://images.unsplash.com/photo-1618005182384-a83a2bd57fbe?w=900&q=80&auto=format&fit=crop",
-    alt: "Abstract gradient form",
+    type: "image",
+    src: "/badel screenshot.png",
+    alt: "Badel",
+    span: "col-span-1 row-span-1 aspect-square",
   },
   {
-    src: "https://images.unsplash.com/photo-1618556450991-2f1af64e8192?w=900&q=80&auto=format&fit=crop",
-    alt: "3D shape study",
+    type: "image",
+    src: "/twingen final.png",
+    alt: "Twingen Final",
+    span: "col-span-1 row-span-1 aspect-square",
   },
   {
-    src: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?w=900&q=80&auto=format&fit=crop",
-    alt: "Texture and light",
+    type: "video",
+    src: "/Motion 1.mp4",
+    span: "col-span-1 row-span-2 aspect-[9/16]",
+  },
+  {
+    type: "image",
+    src: "/Explore 1.webp",
+    alt: "Visual Exploration 01",
+    span: "col-span-1 row-span-1 aspect-square",
+  },
+  {
+    type: "image",
+    src: "/Explore 2.jpg",
+    alt: "Visual Exploration 02",
+    span: "col-span-1 row-span-1 aspect-square",
+  },
+  {
+    type: "image",
+    src: "/Explore 3.jpg",
+    alt: "Visual Exploration 03",
+    span: "col-span-1 row-span-1 aspect-square",
+  },
+  // Additional items (revealed on "View More")
+  {
+    type: "image",
+    src: "/explore 10.webp",
+    alt: "Visual Exploration 10",
+    span: "col-span-1 row-span-1 aspect-square",
+  },
+  {
+    type: "image",
+    src: "/explore-05.png",
+    alt: "Visual Exploration 05",
+    span: "col-span-1 row-span-1 aspect-square",
+  },
+  {
+    type: "image",
+    src: "/explore-06.png",
+    alt: "Visual Exploration 06",
+    span: "col-span-1 row-span-1 aspect-square",
+  },
+  {
+    type: "image",
+    src: "/Stimuler Screen.png",
+    alt: "Stimuler",
+    span: "col-span-1 row-span-1 aspect-square",
+  },
+  {
+    type: "image",
+    src: "/explore-07.png",
+    alt: "Visual Exploration 07",
+    span: "col-span-1 row-span-1 aspect-square",
+  },
+  {
+    type: "image",
+    src: "/explore-08.png",
+    alt: "Visual Exploration 08",
+    span: "col-span-1 row-span-1 aspect-square",
+  },
+  {
+    type: "video",
+    src: "/Motion 2.mp4",
+    span: "col-span-1 row-span-2 aspect-[9/16]",
+  },
+  {
+    type: "video",
+    src: "/motion 3.mp4",
+    span: "col-span-1 row-span-2 aspect-[9/16]",
+  },
+  {
+    type: "video",
+    src: "/Thrifte.mp4",
+    span: "col-span-1 row-span-2 aspect-[9/16]",
   },
 ] as const;
 
-function VideoTile() {
-  return (
-    <div className="relative aspect-[16/9] overflow-hidden border border-black bg-neutral-200">
-      <video
-        className="h-full w-full object-cover"
-        src="/explore.mp4"
-        muted
-        playsInline
-        loop
-        autoPlay
-        preload="metadata"
-      />
-      <span
-        className="pointer-events-none absolute inset-0 flex items-center justify-center"
-        aria-hidden
-      >
-        <span className="flex h-14 w-14 items-center justify-center rounded-full border border-black bg-white/90 text-lg">
-          ▶
-        </span>
-      </span>
-    </div>
-  );
-}
-
 export function VisualExplorations() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const initialItems = items.slice(0, 6);
+  const additionalItems = items.slice(6);
+
   return (
     <section
-      className="border-t border-black"
+      id="visual-diary"
+      className="border-t border-black scroll-mt-[100px]"
       aria-labelledby="visual-explorations-heading"
     >
       <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -55,61 +114,83 @@ export function VisualExplorations() {
           Visual explorations<sup className="text-[0.7em]">⁽⁺⁾</sup>
         </h2>
 
-        <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:auto-rows-fr">
-          <div className="lg:col-span-2">
-            <VideoTile />
-          </div>
-          <div className="relative aspect-[3/4] overflow-hidden border border-black bg-neutral-200 lg:aspect-auto lg:min-h-[220px]">
-            <Image
-              src={stills[0].src}
-              alt={stills[0].alt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 25vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="relative aspect-[3/4] overflow-hidden border border-black bg-neutral-200 lg:aspect-auto lg:min-h-[220px]">
-            <Image
-              src={stills[1].src}
-              alt={stills[1].alt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 25vw"
-              className="object-cover"
-            />
-          </div>
+        <div className="grid grid-flow-dense grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {initialItems.map((item, index) => (
+            <GridItem key={`initial-${index}`} item={item} index={index} />
+          ))}
 
-          <div className="relative aspect-[3/4] overflow-hidden border border-black bg-neutral-200 lg:aspect-auto lg:min-h-[220px]">
-            <Image
-              src={stills[2].src}
-              alt={stills[2].alt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 25vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="lg:col-span-2">
-            <VideoTile />
-          </div>
-          <div className="relative aspect-[3/4] overflow-hidden border border-black bg-neutral-200 lg:aspect-auto lg:min-h-[220px]">
-            <Image
-              src={stills[0].src}
-              alt="Grid tile"
-              fill
-              sizes="(max-width: 1024px) 100vw, 25vw"
-              className="object-cover"
-            />
-          </div>
+          <AnimatePresence>
+            {isExpanded &&
+              additionalItems.map((item, index) => (
+                <GridItem
+                  key={`extra-${index}`}
+                  item={item}
+                  index={index + 6}
+                  isAnimated
+                />
+              ))}
+          </AnimatePresence>
         </div>
 
         <div className="mt-12 flex justify-center">
-          <a
-            href="#"
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
             className="inline-flex items-center justify-center border border-black bg-background px-10 py-3 text-xs font-bold uppercase tracking-widest transition-colors hover:text-background accent-gradient-bg-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
-            VIEW MORE
-          </a>
+            {isExpanded ? "View Less" : "View More"}
+          </button>
         </div>
       </div>
     </section>
+  );
+}
+
+function GridItem({
+  item,
+  index,
+  isAnimated = false,
+}: {
+  item: (typeof items)[number];
+  index: number;
+  isAnimated?: boolean;
+}) {
+  return (
+    <motion.div
+      initial={isAnimated ? { opacity: 0, y: 30 } : false}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      whileHover={{
+        scale: 1.01,
+        y: -8,
+        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+      }}
+      transition={{
+        duration: 0.4,
+        ease: [0.33, 1, 0.68, 1],
+      }}
+      className={`${item.span} relative overflow-hidden rounded-[4px] border border-black bg-neutral-200`}
+    >
+      {item.type === "image" ? (
+        <Image
+          src={item.src!}
+          alt={item.alt!}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover transition duration-500 ease-out"
+        />
+      ) : (
+        <>
+          <video
+            className="h-full w-full object-cover"
+            src={item.src}
+            muted
+            playsInline
+            loop
+            autoPlay
+            preload="auto"
+          />
+        </>
+      )}
+    </motion.div>
   );
 }

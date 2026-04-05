@@ -6,7 +6,7 @@ export function HeroAbout() {
   return (
     <div
       id="about"
-      className="mx-auto grid max-w-[1400px] grid-cols-12 gap-x-4 gap-y-10 px-4 py-12 sm:px-6 lg:px-8 lg:py-16"
+      className="mx-auto grid max-w-[1400px] grid-cols-12 gap-x-4 gap-y-10 px-4 py-12 sm:px-6 lg:px-8 lg:py-16 scroll-mt-[100px]"
     >
       {/* Put the massive name on its own row to prevent overlap with the bio. */}
       <div className="col-span-12 row-start-1 lg:col-span-8">

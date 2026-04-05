@@ -1,15 +1,15 @@
 import Link from "next/link";
 
 const social = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/" },
-  { label: "Dribbble", href: "https://dribbble.com/" },
-  { label: "Instagram", href: "https://www.instagram.com/" },
-  { label: "Twitter", href: "https://twitter.com/" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/manish-madhavan-85426a187/" },
+  { label: "Dribbble", href: "https://dribbble.com/_Manish_UIX" },
+  { label: "Instagram", href: "https://www.instagram.com/manish_dzn/?hl=en" },
+  { label: "Twitter", href: "https://x.com/mah_knees/likes" },
 ] as const;
 
 export function SiteFooter() {
   return (
-    <footer id="contact" className="border-t border-black">
+    <footer id="contact" className="border-t border-black scroll-mt-[100px]">
       <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 lg:px-8 lg:py-20">
         <h2 className="font-black uppercase leading-[0.85] tracking-tighter text-4xl sm:text-6xl lg:text-8xl">
           Got a project?
@@ -20,7 +20,7 @@ export function SiteFooter() {
         </p>
         <a
           href="mailto:manishmadhavan.work@gmail.com"
-          className="mt-8 inline-block text-xl font-bold underline decoration-2 underline-offset-8 hover:bg-accent sm:text-2xl"
+          className="mt-8 inline-block text-xl font-bold underline decoration-2 underline-offset-8 transition-colors duration-300 hover:text-[#000675] cursor-pointer sm:text-2xl"
         >
           → manishmadhavan.work@gmail.com
         </a>
@@ -39,7 +39,7 @@ export function SiteFooter() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline"
+                className="transition-colors duration-300 hover:text-[#000675] cursor-pointer"
               >
                 {item.label}
               </Link>

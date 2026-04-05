@@ -63,7 +63,10 @@ const diaryItems: DiaryItem[] = [
 
 export function VisualDiary() {
   return (
-    <section className="border-t border-black" aria-labelledby="visual-diary-heading">
+    <section
+      className="border-t border-black"
+      aria-labelledby="visual-diary-heading"
+    >
       <div className="mx-auto max-w-[1400px] px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <h2
           id="visual-diary-heading"
