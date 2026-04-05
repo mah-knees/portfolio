@@ -114,7 +114,7 @@ export function VisualExplorations() {
           Visual explorations<sup className="text-[0.7em]">⁽⁺⁾</sup>
         </h2>
 
-        <div className="grid grid-flow-dense grid-cols-3 gap-0.5 sm:gap-1 md:gap-3 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-flow-dense grid-cols-2 gap-1 md:gap-3 md:grid-cols-2 lg:grid-cols-3">
           {initialItems.map((item, index) => (
             <GridItem key={`initial-${index}`} item={item} />
           ))}
@@ -167,7 +167,7 @@ function GridItem({
           src={item.src!}
           alt={item.alt!}
           fill
-          sizes="(max-width: 768px) 33vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition duration-500 ease-out"
         />
       ) : (

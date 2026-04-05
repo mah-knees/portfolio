@@ -4,7 +4,7 @@ import { MotionSection } from "@/components/motion-section";
 import { SelectedWorks } from "@/components/selected-works";
 import { SiteFooter } from "@/components/site-footer";
 import { VisualExplorations } from "@/components/visual-explorations";
-import { VisualDiary } from "@/components/visual-diary";
+// import { VisualDiary } from "@/components/visual-diary";
 
 export default function Home() {
   return (
@@ -20,9 +20,9 @@ export default function Home() {
         <MotionSection>
           <VisualExplorations />
         </MotionSection>
-        <MotionSection>
+        {/* <MotionSection>
           <VisualDiary />
-        </MotionSection>
+        </MotionSection> */}
         <MotionSection>
           <SiteFooter />
         </MotionSection>
