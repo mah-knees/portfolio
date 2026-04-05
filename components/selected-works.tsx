@@ -13,6 +13,9 @@ const works = [
     href: "https://drive.google.com/file/d/11aB0VtLjA-nOziSzd_Nfl1BeD0gKSw0R/view?usp=drive_link",
     image: "/Instagram post - 3.png",
     alt: "ADYA Care healthcare project",
+    imageBoxClasses: "bg-[#EEF0F5] md:bg-neutral-200",
+    imageClasses: "grayscale-0 md:grayscale md:group-hover:grayscale-0 [image-rendering:optimizeQuality]",
+    subtitleClasses: "text-[#3E4D60] md:text-foreground",
   },
   {
     title: "Discount Coupon Management Dashboard",
@@ -22,6 +25,9 @@ const works = [
     href: "https://medium.com/@manishmadhavan0025/designing-a-seamless-coupon-creation-management-feature-for-zomato-restaurant-partner-app-d738020aee78",
     image: "/Instagram post - 2.png",
     alt: "Zomato partner app project",
+    imageBoxClasses: "bg-neutral-200 saturate-[1.15] brightness-[1.05] md:saturate-100 md:brightness-100",
+    imageClasses: "grayscale-0 md:grayscale md:group-hover:grayscale-0",
+    subtitleClasses: "text-foreground",
   },
 ] as const;
 
@@ -60,20 +66,20 @@ export function SelectedWorks() {
                 }}
                 className="flex flex-col gap-6 rounded-lg bg-background p-4 sm:p-6"
               >
-                <div className="relative aspect-[4/3] overflow-hidden border border-black bg-neutral-200">
+                <div className={`relative aspect-[4/3] overflow-hidden border border-black ${item.imageBoxClasses}`}>
                   <Image
                     src={item.image}
                     alt={item.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover grayscale transition duration-500 ease-out group-hover:grayscale-0"
+                    className={`object-cover transition duration-500 ease-out ${item.imageClasses}`}
                   />
                 </div>
                 <div className="flex flex-col items-start gap-1">
                   <h3 className="text-lg font-bold leading-tight tracking-tight transition-colors duration-300 group-hover:text-foreground sm:text-xl lg:text-2xl">
                     {item.title}
                   </h3>
-                  <p className="text-xs font-bold uppercase tracking-widest text-foreground transition-colors duration-300">
+                  <p className={`text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${item.subtitleClasses}`}>
                     {item.subtitle}
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-foreground/70 transition-colors duration-300 group-hover:text-foreground">

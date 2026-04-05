@@ -20,7 +20,7 @@ const items = [
   {
     type: "video",
     src: "/Motion 1.mp4",
-    span: "col-span-1 row-span-2 aspect-[9/16]",
+    span: "col-span-1 row-span-1 aspect-square md:col-span-1 md:row-span-2 md:aspect-[9/16]",
   },
   {
     type: "image",
@@ -80,17 +80,17 @@ const items = [
   {
     type: "video",
     src: "/Motion 2.mp4",
-    span: "col-span-1 row-span-2 aspect-[9/16]",
+    span: "col-span-1 row-span-1 aspect-square md:col-span-1 md:row-span-2 md:aspect-[9/16]",
   },
   {
     type: "video",
     src: "/motion 3.mp4",
-    span: "col-span-1 row-span-2 aspect-[9/16]",
+    span: "col-span-1 row-span-1 aspect-square md:col-span-1 md:row-span-2 md:aspect-[9/16]",
   },
   {
     type: "video",
     src: "/Thrifte.mp4",
-    span: "col-span-1 row-span-2 aspect-[9/16]",
+    span: "col-span-1 row-span-1 aspect-square md:col-span-1 md:row-span-2 md:aspect-[9/16]",
   },
 ] as const;
 
@@ -114,7 +114,7 @@ export function VisualExplorations() {
           Visual explorations<sup className="text-[0.7em]">⁽⁺⁾</sup>
         </h2>
 
-        <div className="grid grid-flow-dense grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-flow-dense grid-cols-3 gap-0.5 sm:gap-1 md:gap-3 md:grid-cols-2 lg:grid-cols-3">
           {initialItems.map((item, index) => (
             <GridItem key={`initial-${index}`} item={item} />
           ))}
@@ -156,23 +156,18 @@ function GridItem({
       initial={isAnimated ? { opacity: 0, y: 30 } : false}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      whileHover={{
-        scale: 1.01,
-        y: -8,
-        boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-      }}
       transition={{
         duration: 0.4,
         ease: [0.33, 1, 0.68, 1],
       }}
-      className={`${item.span} relative overflow-hidden rounded-[4px] border border-black bg-neutral-200`}
+      className={`${item.span} relative overflow-hidden rounded-[4px] border border-black bg-neutral-200 transition-all duration-300 [@media(hover:hover)]:hover:-translate-y-2 [@media(hover:hover)]:hover:scale-[1.01] [@media(hover:hover)]:hover:shadow-[0_20px_40px_rgba(0,0,0,0.1)]`}
     >
       {item.type === "image" ? (
         <Image
           src={item.src!}
           alt={item.alt!}
           fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 33vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition duration-500 ease-out"
         />
       ) : (
