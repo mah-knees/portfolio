@@ -97,8 +97,8 @@ const items = [
 export function VisualExplorations() {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const initialItems = items.slice(0, 6);
-  const additionalItems = items.slice(6);
+  const initialItems = items.slice(0, 5);
+  const additionalItems = items.slice(5);
 
   return (
     <section
@@ -125,7 +125,7 @@ export function VisualExplorations() {
                 <GridItem
                   key={`extra-${index}`}
                   item={item}
-                  index={index + 6}
+                  index={index + 5}
                   isAnimated
                 />
               ))}
