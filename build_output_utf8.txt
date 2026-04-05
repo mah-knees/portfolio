@@ -1,0 +1,39 @@
+﻿
+> portfolio@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+node.exe : 
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" "C:\
+Users\AARON\AppData\Roaming
+\ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (:St  
+  ring) [], RemoteExcept   
+ ion
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+Failed to compile.
+
+./components/visual-explora
+tions.tsx
+150:3  Error: 'index' is 
+defined but never used.  @t
+ypescript-eslint/no-unused-
+vars
+
+info  - Need to disable 
+some ESLint rules? Learn 
+more here: https://nextjs.o
+rg/docs/basic-features/esli
+nt#disabling-rules

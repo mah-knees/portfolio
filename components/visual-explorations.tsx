@@ -116,7 +116,7 @@ export function VisualExplorations() {
 
         <div className="grid grid-flow-dense grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {initialItems.map((item, index) => (
-            <GridItem key={`initial-${index}`} item={item} index={index} />
+            <GridItem key={`initial-${index}`} item={item} />
           ))}
 
           <AnimatePresence>
@@ -125,7 +125,6 @@ export function VisualExplorations() {
                 <GridItem
                   key={`extra-${index}`}
                   item={item}
-                  index={index + 5}
                   isAnimated
                 />
               ))}
@@ -147,11 +146,9 @@ export function VisualExplorations() {
 
 function GridItem({
   item,
-  index,
   isAnimated = false,
 }: {
   item: (typeof items)[number];
-  index: number;
   isAnimated?: boolean;
 }) {
   return (
